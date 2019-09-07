@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Card from "./Card";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+      <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
+        <a class="navbar-brand" href="#">
+          BeerDex
         </a>
-      </header>
+      </nav>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm mb-2">
+            <Card></Card>
+          </div>
+          <div class="col-sm">
+            <Card></Card>
+          </div>
+          <div class="col-sm">
+            <Card></Card>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
