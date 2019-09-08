@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-
 import axios from "axios";
+import { Redirect } from 'react-router-dom'
 
 class Card extends Component {
   constructor(props) {
@@ -11,23 +11,25 @@ class Card extends Component {
   componentDidMount() {
     axios.get("https://api.punkapi.com/v2/beers").then(res => {
       const cervejas = res.data;
-      this.setState({ cervejas: cervejas });
-      console.log(`CERVEJAS:`);
-      console.log(this.state);
+      this.setState({ cervejas: cervejas });          
     });
   }
 
-  render() {
-    const { beers } = this.state;
+  detalhar(id, e) {
+    e.preventDefault();
+    console.log(`Botão clicado ${id}`);    
+    window.location.href = `${id}`;
+  }
+
+  render() {    
 
     return (
       <div>
-        <div class="container">
-          <div class="row">
-            
-              {this.state.cervejas &&
-                this.state.cervejas.map(cerveja => (
-                  <div className="col-sm-4" style={{ width: "18rem" }}>
+        <div className="container">
+          <div className="row">
+            {this.state.cervejas &&
+              this.state.cervejas.map(cerveja => (
+                <div className="col-sm-4" style={{ width: "18rem" }}>
                   <div className="card-body border mb-2" key={cerveja.id}>
                     <h5 className="card-title">{cerveja.name}</h5>
                     <p className="card-text d-flex flex-row">
@@ -37,14 +39,12 @@ class Card extends Component {
                       <a href={cerveja.image_url}>Foto</a>
                     </p>
                     <hr />
-                    <a href="#" className="btn btn-primary">
+                    <a href="#" className="btn btn-primary" onClick={(e) => this.detalhar(cerveja.id, e)}>
                       Detalhes
                     </a>
                   </div>
-                  </div>
-                ))}
-            
-           
+                </div>
+              ))}
           </div>
         </div>
       </div>

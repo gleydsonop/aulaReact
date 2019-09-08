@@ -1,23 +1,19 @@
 import React from "react";
 import "./App.css";
-import Card from "./Card";
+import Navbar from "./Navbar"
+
+import BeerDetail from "./BeerDetail";
+import BeerList from "./BeerList";
+
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
-        <a class="navbar-brand" href="#">
-          BeerDex
-        </a>
-      </nav>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm mb-2">
-            <Card></Card>
-          </div>         
-        </div>
-      </div>
-    </div>
+    <Router>
+      <Navbar></Navbar>
+      <Route exact path="/" component={BeerList} />
+      <Route exact path="/:id" component={BeerDetail} />
+    </Router>
   );
 }
 
