@@ -14,13 +14,7 @@ function App() {
         <div class="row">
           <div class="col-sm mb-2">
             <Card></Card>
-          </div>
-          <div class="col-sm">
-            <Card></Card>
-          </div>
-          <div class="col-sm">
-            <Card></Card>
-          </div>
+          </div>         
         </div>
       </div>
     </div>
